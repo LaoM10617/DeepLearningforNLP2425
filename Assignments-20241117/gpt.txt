@@ -1,0 +1,63 @@
+Task 1.1: Scaled Dot-Product Attention and Multi-Head Attention
+Convolution layer (CONV)The convolution layer (CONV) uses filters that perform convolution operations as it is scanning the input I with respect to its dimensions. Its hyperparameters include the filter size F and stride S. The resulting output O is called feature map or activation map.
+
+def get_sinusoid_table(max_len, emb_dim):
+    def get_angle(pos, i, emb_dim):
+        return pos / 10000 ** ((2 * (i // 2)) / emb_dim)
+
+    sinusoid_table = torch.zeros(max_len, emb_dim)
+    for pos in range(max_len):
+        for i in range(emb_dim):
+            if i % 2 == 0:
+                sinusoid_table[pos, i] = math.sin(get_angle(pos, i, emb_dim))
+            else:
+                sinusoid_table[pos, i] = math.cos(get_angle(pos, i, emb_dim))
+    return sinusoid_table
+
+class Encoder(nn.Module):
+    def __init__(
+        self,
+        vocab_size,
+        emb_dim,
+        num_layers,
+        num_heads,
+        forward_dim,
+        dropout,
+        max_len,
+    ):
+        super().__init__()
+
+        # TODO
+
+    def forward(self, x, mask):
+        # TODO
+
+        return # TODO
+
+const particles2 = new THREE.BufferGeometry();
+
+const positions2 = [];
+const layers = 10; // 分层数量
+const heightPerLayer = 1.5; // 每层的高度
+
+for (let layer = 0; layer < layers; layer++) {
+    const layerHeight = layer * heightPerLayer; // 当前层的高度
+    const radius = 5 - layer * 0.5; // 半径逐渐减小
+    const layerParticles = Math.floor(particleCount / layers); // 每层的粒子数量
+
+    for (let i = 0; i < layerParticles; i++) {
+        const angle = Math.random() * Math.PI * 2; // 随机角度
+        const distance = Math.random() * radius; // 半径内随机分布
+        const heightOffset = Math.random() * 0.3; // 模拟树叶厚度
+
+        const x = Math.cos(angle) * distance;
+        const y = layerHeight + heightOffset; // 当前层的高度 + 偏移
+        const z = Math.sin(angle) * distance;
+
+        positions2.push(x, y, z);
+    }
+}
+particles2.setAttribute('position', new THREE.Float32BufferAttribute(positions2, 3));
+
+const particleTree2 = new THREE.Points(particles2, particleMaterial);
+scene.add(particleTree2);
